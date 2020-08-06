@@ -99,6 +99,7 @@ class CycloidalDrive:
 
         doc.layers.new(name='cam')
         msp.add_lwpolyline(self.generate_cam().transpose(), dxfattribs = {'closed': True, 'layer': 'cam'})
+        msp.add_point( (0, self.eccentricity), dxfattribs = {'layer': 'cam'})
 
         doc.layers.new(name='pins')
         for n in range(0, self.count_pin):
@@ -110,12 +111,12 @@ class CycloidalDrive:
         return doc
 
 if __name__ == '__main__':
-    drive = CycloidalDrive(   count_pin = 26,
-                              count_cam = 25,
-                              eccentricity = 2,
-                              radius_pin = 4,
-                              radius_pattern = 60,
-                              resolution = 50,
+    drive = CycloidalDrive(   count_pin = 34,
+                              count_cam = 33,
+                              eccentricity = 1,
+                              radius_pin = 2,
+                              radius_pattern = 37,
+                              resolution = 100,
                               reduction_tolerance = 2.0)
 
     cam = drive.generate_cam()
